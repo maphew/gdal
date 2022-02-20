@@ -5,6 +5,7 @@
 image: osgeo/gdal:ubuntu-small-latest
 
 tasks:
-  - init: cmake .
+  - init: echo "Hello there"
+#  - init: cmake .
 
 
