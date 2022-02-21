@@ -6,7 +6,7 @@
 #image:
 #  file: docker/ubuntu-small-plus/Dockerfile
 
-image: osgeo/gdal/ubuntu-small
+image: osgeo:gdal/ubuntu-small
 
 tasks:
   # Selected depenencies from cmake_builds.yml
