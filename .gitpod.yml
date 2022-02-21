@@ -27,5 +27,5 @@ tasks:
            # libpq-dev libpqtypes-dev postgresql-12 postgresql-12-postgis-3 postgresql-client-12 postgresql-12-postgis-3-scripts
            # swig doxygen texlive-latex-base make cppcheck ccache g++
   - name: Add sudo for gitpod user
-  - init: apt-get install sudo && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
+  - init: apt-get install sudo && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers && sudo echo "sudo installed, I think"
   - init: cmake .
