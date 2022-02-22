@@ -2,7 +2,10 @@
 # Please adjust to your needs (see https://www.gitpod.io/docs/config-gitpod-file)
 # and commit this file to your remote git repository to share the goodness with others.
 
-image: osgeo/gdal
+image:
+  file: .gitpod.Dockerfile
+
+#image: osgeo/gdal
 
 # Doesn't work. Gdal dockerfile uses paths that aren't the same in Gitpod
 #image:
