@@ -4,11 +4,19 @@ RUN uname -a && cat /etc/os-release
 # RUN add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
     # results in "E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?"
 RUN apt-get update --fix-missing
-RUN apt-get install -y sudo \
-    # gdal dependencies
-    libproj-dev \
-    # for testing gdal-utils
-    python3-pip python3-venv
+
+# full list dependencies according to
+# https://github.com/OSGeo/gdal/blob/6e6aff451dbcde450f051bff2f2e75ce6a4a3e6f/.github/workflows/cmake_builds.yml#L37
+RUN sudo apt-get install -y bison libjpeg-dev libgif-dev liblzma-dev libzstd-dev libgeos-dev git \
+   libcurl4-gnutls-dev libproj-dev libxml2-dev  libxerces-c-dev libnetcdf-dev netcdf-bin \
+   libpoppler-dev libpoppler-private-dev gpsbabel libhdf4-alt-dev libhdf5-serial-dev libpodofo-dev poppler-utils \
+   libfreexl-dev unixodbc-dev libwebp-dev libepsilon-dev liblcms2-2 libcrypto++-dev libdap-dev libkml-dev \
+   libmysqlclient-dev libarmadillo-dev wget libfyba-dev libjsoncpp-dev libexpat1-dev \
+   libclc-dev ocl-icd-opencl-dev libsqlite3-dev sqlite3-pcre libpcre3-dev libspatialite-dev libsfcgal-dev fossil libcairo2-dev libjson-c-dev libdeflate-dev liblz4-dev libblosc-dev \
+   libqhull-dev libcfitsio-dev libogdi-dev libopenjp2-7-dev libcharls-dev libheif-dev \
+   python3-dev libpython3-dev libpython3.8-dev python3.8-dev python3-numpy python3-lxml pyflakes python3-setuptools python3-pip python3-venv \
+   python3-pytest swig doxygen texlive-latex-base make cppcheck ccache g++ \
+   libpq-dev libpqtypes-dev postgresql-12 postgresql-12-postgis-3 postgresql-client-12 postgresql-12-postgis-3-scripts
 
 ### Gitpod user ###
 # https://community.gitpod.io/t/how-to-resolve-password-issue-in-sudo-mode-for-custom-image/2395/3
