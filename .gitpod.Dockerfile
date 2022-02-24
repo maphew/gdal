@@ -7,7 +7,7 @@ RUN apt-get update --fix-missing
 
 # full list dependencies according to
 # https://github.com/OSGeo/gdal/blob/6e6aff451dbcde450f051bff2f2e75ce6a4a3e6f/.github/workflows/cmake_builds.yml#L37
-RUN sudo apt-get install -y bison libjpeg-dev libgif-dev liblzma-dev libzstd-dev libgeos-dev git \
+RUN apt-get install -y bison libjpeg-dev libgif-dev liblzma-dev libzstd-dev libgeos-dev git \
    libcurl4-gnutls-dev libproj-dev libxml2-dev  libxerces-c-dev libnetcdf-dev netcdf-bin \
    libpoppler-dev libpoppler-private-dev gpsbabel libhdf4-alt-dev libhdf5-serial-dev libpodofo-dev poppler-utils \
    libfreexl-dev unixodbc-dev libwebp-dev libepsilon-dev liblcms2-2 libcrypto++-dev libdap-dev libkml-dev \
@@ -17,6 +17,10 @@ RUN sudo apt-get install -y bison libjpeg-dev libgif-dev liblzma-dev libzstd-dev
    python3-dev libpython3-dev libpython3.8-dev python3.8-dev python3-numpy python3-lxml pyflakes python3-setuptools python3-pip python3-venv \
    python3-pytest swig doxygen texlive-latex-base make cppcheck ccache g++ \
    libpq-dev libpqtypes-dev postgresql-12 postgresql-12-postgis-3 postgresql-client-12 postgresql-12-postgis-3-scripts
+
+# RUN python3 -m pip install -U pip wheel setuptools numpy
+# Enable for testing
+# RUN python3 -m pip install -r /workspace/gdal/autotest/requirements.txt
 
 ### Gitpod user ###
 # https://community.gitpod.io/t/how-to-resolve-password-issue-in-sudo-mode-for-custom-image/2395/3
