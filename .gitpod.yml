@@ -3,34 +3,5 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 image:
-  file: .gitpod.Dockerfile
-
-#image: osgeo/gdal
-
-# Doesn't work. Gdal dockerfile uses paths that aren't the same in Gitpod
-#image:
-#  file: docker/ubuntu-small-plus/Dockerfile
-
-# image: osgeo/gdal:ubuntu-small-latest
-
-# tasks:
-#   # Selected depenencies from cmake_builds.yml
-#   - name: Install dependencies
-#   - init: add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable \
-#         && sudo apt-get update \
-#         && sudo apt-get install -y -q libjpeg-dev libgif-dev liblzma-dev libzstd-dev libgeos-dev git \
-#            libproj-dev \
-#            python3-dev libpython3-dev libpython3.8-dev python3.8-dev python3-numpy python3-lxml pyflakes python3-setuptools python3-pip python3-venv \
-#            python3-pytest python3-pip python3-setuptools
-#            # bison libcurl4-gnutls-dev
-#            # libxml2-dev  libxerces-c-dev libnetcdf-dev netcdf-bin
-#            # libpoppler-dev libpoppler-private-dev gpsbabel libhdf4-alt-dev libhdf5-serial-dev libpodofo-dev poppler-utils \
-#            # libqhull-dev libcfitsio-dev libogdi-dev libopenjp2-7-dev libcharls-dev libheif-dev \
-#           #  libmysqlclient-dev libarmadillo-dev wget libfyba-dev libjsoncpp-dev libexpat1-dev \
-#           #  libclc-dev ocl-icd-opencl-dev libsqlite3-dev sqlite3-pcre libpcre3-dev libspatialite-dev libsfcgal-dev fossil libcairo2-dev libjson-c-dev libdeflate-dev liblz4-dev libblosc-dev \
-#            # libfreexl-dev unixodbc-dev libwebp-dev libepsilon-dev liblcms2-2 libcrypto++-dev libdap-dev libkml-dev \
-#            # libpq-dev libpqtypes-dev postgresql-12 postgresql-12-postgis-3 postgresql-client-12 postgresql-12-postgis-3-scripts
-#            # swig doxygen texlive-latex-base make cppcheck ccache g++
-#   - name: Add sudo for gitpod user
-#   - init: apt-get install sudo && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers && sudo echo "sudo installed, I think"
-#   - init: cmake .
+  #file: .gitpod.Dockerfile
+  file: .gitpod.Dockerfile-large
