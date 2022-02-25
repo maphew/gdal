@@ -27,8 +27,9 @@ RUN apt-get install -y bison libjpeg-dev libgif-dev liblzma-dev libzstd-dev libg
    python3-pytest swig doxygen texlive-latex-base make cppcheck ccache g++ \
    libpq-dev libpqtypes-dev postgresql-12 postgresql-12-postgis-3 postgresql-client-12 postgresql-12-postgis-3-scripts
 
-#RUN python3 -m pip install -U pip wheel setuptools numpy
+RUN python3 -m pip install -U pip wheel setuptools numpy
 # Enable for testing
 #RUN python3 -m pip install -r /workspace/gdal/autotest/requirements.txt
 
+ENV PATH=/home/gitpod/.local/bin:$PATH
 ENV CMAKE_BUILD_TYPE=release
