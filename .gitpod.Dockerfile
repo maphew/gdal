@@ -4,6 +4,15 @@ RUN uname -a && cat /etc/os-release
 # RUN add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
     # results in "E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?"
 RUN apt-get update --fix-missing
+RUN apt-get install -y apt-utils
+
+### Gitpod user ###
+# https://community.gitpod.io/t/how-to-resolve-password-issue-in-sudo-mode-for-custom-image/2395/3
+# '-l': see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
+RUN apt-get install -y sudo
+RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
+    # passwordless sudo for users in the 'sudo' group
+    && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 
 # full list dependencies according to
 # https://github.com/OSGeo/gdal/blob/6e6aff451dbcde450f051bff2f2e75ce6a4a3e6f/.github/workflows/cmake_builds.yml#L37
@@ -18,15 +27,8 @@ RUN apt-get install -y bison libjpeg-dev libgif-dev liblzma-dev libzstd-dev libg
    python3-pytest swig doxygen texlive-latex-base make cppcheck ccache g++ \
    libpq-dev libpqtypes-dev postgresql-12 postgresql-12-postgis-3 postgresql-client-12 postgresql-12-postgis-3-scripts
 
-# RUN python3 -m pip install -U pip wheel setuptools numpy
+#RUN python3 -m pip install -U pip wheel setuptools numpy
 # Enable for testing
-# RUN python3 -m pip install -r /workspace/gdal/autotest/requirements.txt
-
-### Gitpod user ###
-# https://community.gitpod.io/t/how-to-resolve-password-issue-in-sudo-mode-for-custom-image/2395/3
-# '-l': see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
-RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
-    # passwordless sudo for users in the 'sudo' group
-    && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
+#RUN python3 -m pip install -r /workspace/gdal/autotest/requirements.txt
 
 ENV CMAKE_BUILD_TYPE=release
