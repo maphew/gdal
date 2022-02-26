@@ -1,8 +1,8 @@
 # Gitpod configuration files
 
-www.gitpod.io - a clould environment for spinning up fresh automated dev environments straight from a git repository.
+**[Gitpod](https://www.gitpod.io/)** is a clould IDE environment for automatically spinning up fresh linux dev environments straight from a git repository and developing in your browser. This directory contains Gitpod configuration files for running gdal docker images in Gitpod.
 
-This directory contains Gitpod configuration files for running gdal docker images in that environment.
+**Why?** The initiating spark was having an easily reproducible and complete GDAL linux machine available to test changes being made to python scripts by a Windows developer. Much more than this simple goal is possible from this base point though.
 
 Generally what the files do is:
 
