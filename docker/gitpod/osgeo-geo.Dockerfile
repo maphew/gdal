@@ -3,8 +3,8 @@ RUN uname -a && cat /etc/os-release
 # RUN apt-get install -y software-properties-common
 # RUN add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
     # results in "E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?"
-#RUN apt-get update --fix-missing
-#RUN apt-get install -y apt-utils
+RUN apt-get update --fix-missing
+RUN apt-get install -y apt-utils
 
 ### Gitpod user ###
 # https://community.gitpod.io/t/how-to-resolve-password-issue-in-sudo-mode-for-custom-image/2395/3
