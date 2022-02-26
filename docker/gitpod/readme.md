@@ -21,9 +21,12 @@ Generally what the files do is:
 
 `test-$IMAGE-NAME.sh` - run this from a default gitpod image to test the associated .Dockerfile contents without having to commit every change to repo first (see [Trying out changes to your Dockerfile](https://www.gitpod.io/docs/config-docker#trying-out-changes-to-your-dockerfile)).
 
-## Notes
+## Known limitations
 
 Alpine images aren't used due to an upstream incompatibilty in Gitpod ([Issue #3356](https://github.com/gitpod-io/gitpod/issues/3356)).
 
+A separate git branch is needed for each Gitpod image, due to hardcoding of Dockerfile path in `.gitpod.yml`.
+
 ## Future Work
+
 This implementation uses GDAL images that are published to Docker Hub, so they are always somewhat older than current development. It would be good to adapt any or all of `./docker/*/Dockerfile` so that gitpod can be launched from current state of the repository.
