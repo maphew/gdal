@@ -24,3 +24,6 @@ Generally what the files do is:
 ## Notes
 
 Alpine images aren't used due to an upstream incompatibilty in Gitpod ([Issue #3356](https://github.com/gitpod-io/gitpod/issues/3356)).
+
+## Future Work
+This implementation uses GDAL images that are published to Docker Hub, so they are always somewhat older than current development. It would be good to adapt any or all of `./docker/*/Dockerfile` so that gitpod can be launched from current state of the repository.
