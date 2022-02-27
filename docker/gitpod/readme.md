@@ -21,6 +21,15 @@ Generally what the files do is:
 
 `test-$IMAGE-NAME.sh` - run this from a default gitpod image to test the associated .Dockerfile contents without having to commit every change to repo first (see [Trying out changes to your Dockerfile](https://www.gitpod.io/docs/config-docker#trying-out-changes-to-your-dockerfile)).
 
+## Developing
+
+- Fire up gitpod or other docker enabled machine
+- Edit .Dockerfile as desired
+- Test the docker file validity with `docker build -f osgeo-geo.Dockerfile -t test-osgeo-gdal .`
+- Commit changes
+- Run `https://gitpod.io/#URL_OF_YOUR_FORK`, e.g.
+  https://gitpod.io/#https://github.com/maphew/gdal/tree/gitpod/
+
 ## Known limitations
 
 Alpine images aren't used due to an upstream incompatibilty in Gitpod ([Issue #3356](https://github.com/gitpod-io/gitpod/issues/3356)).
