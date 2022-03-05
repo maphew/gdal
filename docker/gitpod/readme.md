@@ -23,6 +23,7 @@ Generally what the files do is:
 
 ## Developing
 
+- Create a git branch for the Docker image being used as base, edit `.gitpod.yml` accordingly
 - Fire up gitpod or other docker enabled machine
 - Edit .Dockerfile as desired
 - Test the docker file validity with `docker build -f osgeo-geo.Dockerfile -t test-osgeo-gdal .`
