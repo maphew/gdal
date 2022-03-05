@@ -9,4 +9,4 @@ image:
   f1ile: docker/gitpod/ubuntu-small-latest.Dockerfile
 
   # Gitpod's default full workspace
-  #file: docker/gitpod/gitpod-workspace-full.Dockerfile
+  file: docker/gitpod/gitpod-workspace-full.Dockerfile
