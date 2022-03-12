@@ -1,12 +1,24 @@
 # Also see https://www.gitpod.io/docs/config-gitpod-file
 
-# Enable only one image
-image:
-  # Default osgeo image (same as ubuntu-full-latest)
-  #file: docker/gitpod/osgeo-geo.Dockerfile
+# per @zy69 we don't need to specify image when using Gitpod's default workspace
+# https://github.com/OSGeo/gdal/pull/5393#issuecomment-1060131368
+# # Enable only one image
+# image:
+#   # Default osgeo image (same as ubuntu-full-latest)
+#   #file: docker/gitpod/osgeo-geo.Dockerfile
 
-  # Ubuntu small
-  f1ile: docker/gitpod/ubuntu-small-latest.Dockerfile
+#   # Ubuntu small
+#   # f1ile: docker/gitpod/ubuntu-small-latest.Dockerfile
 
-  # Gitpod's default full workspace
-  file: docker/gitpod/gitpod-workspace-full.Dockerfile
+#   # Gitpod's default full workspace
+#   file: docker/gitpod/gitpod-workspace-full.Dockerfile
+
+tasks:
+  - name: Dependencies
+    init: |
+      sudo bash .github/workflows/ubuntu_20.04/build-deps.sh  # install deps
+      sed "s/cd \/build/cd \/workspace\/gdal/1" -i .github/workflows/ubuntu_20.04/build.sh
+
+      # let's try cmake build instead
+      #bash .github/workflows/ubuntu_20.04/build.sh. # build
+      cmake .
