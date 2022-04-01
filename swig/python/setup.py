@@ -13,6 +13,7 @@ import sys
 import os
 
 from glob import glob
+from pathlib import Path
 
 from setuptools.command.build_ext import build_ext
 from setuptools import setup
@@ -285,6 +286,7 @@ def define_entry_points(scripts, entry_points=None):
         name = Path(f).stem # 'gdal_edit' from 'gdal_edit.py'
         console_scripts.append([f'{name} = osgeo_utils.{name}:main'])
     entry_points = {'console_scripts': console_scripts}
+    # print(f"---DEBUG entry_points: {entry_points}\n---DEBUG from scripts: {scripts}")
     return entry_points
 
 
@@ -343,7 +345,7 @@ utils_package_root = 'gdal-utils'   # path for gdal-utils sources
 packages = find_packages(utils_package_root)
 packages = ['osgeo'] + packages
 package_dir = {'osgeo': 'osgeo', '': utils_package_root}
-scripts = glob(f'{utils_package_root}./osgeo_utils/*.py') # command line scripts
+scripts = glob(f'{utils_package_root}/osgeo_utils/*.py') # command line scripts
 
 readme = open('README.rst', encoding="utf-8").read()
 
