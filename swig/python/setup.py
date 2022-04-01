@@ -269,6 +269,24 @@ class gdal_ext(build_ext):
         ext.extra_compile_args.extend(self.extra_cflags)
         return build_ext.build_extension(self, ext)
 
+# keep this func in sync with gdal-utils/setup.py func of same name
+def define_entry_points(scripts, entry_points=None):
+    """
+    Return a dict defining scripts that get installed to PYTHONHOME/Scripts.
+
+        console_scripts : [
+            # CLI_command = dirname.filename
+            'gdal_edit = osgeo_utils.gdal_edit',
+            'gdal_merge = osgeo_utils.gdal_merge',
+            ... ]
+    """
+    console_scripts = []
+    for f in scripts:
+        name = Path(f).stem # 'gdal_edit' from 'gdal_edit.py'
+        console_scripts.append([f'{name} = osgeo_utils.{name}:main'])
+    entry_points = {'console_scripts': console_scripts}
+    return entry_points
+
 
 extra_link_args = []
 extra_compile_args = []
@@ -325,6 +343,7 @@ utils_package_root = 'gdal-utils'   # path for gdal-utils sources
 packages = find_packages(utils_package_root)
 packages = ['osgeo'] + packages
 package_dir = {'osgeo': 'osgeo', '': utils_package_root}
+scripts = glob(f'{utils_package_root}./osgeo_utils/*.py') # command line scripts
 
 readme = open('README.rst', encoding="utf-8").read()
 
@@ -378,7 +397,8 @@ setup_kwargs = dict(
     python_requires='>=3.6.0',
     data_files=data_files,
     ext_modules=ext_modules,
-    scripts=glob(utils_package_root + '/scripts/*.py'),
+    #scripts=glob(utils_package_root + '/scripts/*.py'), # use entry_points console_script instead
+    entry_points=define_entry_points(scripts),
     cmdclass={'build_ext': gdal_ext},
     extras_require={'numpy': ['numpy > 1.0.0']},
     zip_safe=False,
