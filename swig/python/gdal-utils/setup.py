@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 # Setup script for gdal-utils.
 from glob import glob
-# from importlib.metadata import entry_points
 from pathlib import Path
 
 from setuptools import setup, find_packages
@@ -36,8 +35,9 @@ __readme_type__ = 'text/x-rst'
 package_root = '.'   # package sources are under this dir
 packages = find_packages(package_root)  # include all packages under package_root
 package_dir = {'': package_root}  # packages sources are under package_root
-scripts = sorted(glob('./osgeo_utils/*.py'), reverse=True) # command line scripts
+scripts = glob('./osgeo_utils/*.py') # command line scripts
 
+# keep this func in sync with swig/python/setup.py func of same name
 def define_entry_points(scripts, entry_points=None):
     """
     Return a dict defining scripts that get installed to PYTHONHOME/Scripts.
@@ -72,7 +72,7 @@ setup(
     packages=packages,
     package_dir=package_dir,
     # scripts=glob('./scripts/*.py'), # use entry_points console_script instead
+    entry_points=define_entry_points(scripts),
     install_requires=['gdal'],
     extras_require={'numpy': ['numpy > 1.0.0']},
-    entry_points=define_entry_points(scripts),
 )
