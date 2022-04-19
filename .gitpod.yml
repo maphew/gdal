@@ -6,7 +6,7 @@ image:
   #file: docker/gitpod/osgeo-geo.Dockerfile
 
   # Ubuntu small
-  f1ile: docker/gitpod/ubuntu-small-latest.Dockerfile
+  file: docker/gitpod/ubuntu-small-latest.Dockerfile
 
   # Gitpod's default full workspace
   #file: docker/gitpod/gitpod-workspace-full.Dockerfile
